@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="theme-color" content="#100d1b">
+  <meta name="description" content="A quiet Open Source Orchestra archive, being prepared with sources, consent, and care.">
+  <link rel="canonical" href="https://hash-of-fame.opensourceorchestra.org/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>Hash of Fame · Open Source Orchestra</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --night: #100d1b;
+      --plum: #24152d;
+      --cream: #f8efdd;
+      --muted: #c6bcae;
+      --gold: #efc76e;
+      --coral: #ed9475;
+      --line: rgba(239, 199, 110, .24);
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--night); }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      color: var(--cream);
+      font-family: var(--serif);
+      background:
+        radial-gradient(ellipse at 12% 8%, rgba(116, 77, 145, .25), transparent 42%),
+        radial-gradient(ellipse at 90% 84%, rgba(237, 148, 117, .12), transparent 44%),
+        linear-gradient(155deg, #100d1b 0%, #191022 52%, #29172c 100%);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .22;
+      background-image: repeating-linear-gradient(0deg, transparent 0 35px, var(--line) 35px 36px, transparent 36px 44px);
+      mask-image: linear-gradient(to bottom, transparent, #000 24%, #000 78%, transparent);
+    }
+    a { color: var(--gold); text-underline-offset: .24em; }
+    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 6px; border-radius: 3px; }
+    .skip { position: fixed; left: 1rem; top: -6rem; z-index: 5; padding: .7rem 1rem; background: var(--cream); color: var(--night); font-family: var(--sans); }
+    .skip:focus { top: 1rem; }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 28px 0; font-family: var(--sans); }
+    .home { display: inline-flex; align-items: center; gap: .7rem; color: var(--cream); text-decoration: none; font-size: .77rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    .home svg { width: 30px; height: 30px; color: var(--gold); }
+    .quiet { margin: 0; color: var(--muted); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; text-align: right; }
+    main { position: relative; }
+    .hero { min-height: 62svh; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: clamp(2rem, 7vw, 7rem); padding: clamp(3rem, 8vw, 7rem) 0; }
+    .eyebrow { margin: 0 0 1.2rem; color: var(--gold); font: 700 .72rem/1.5 var(--sans); letter-spacing: .24em; text-transform: uppercase; }
+    h1 { margin: 0; max-width: 8ch; font-size: clamp(4.2rem, 10vw, 8.6rem); font-weight: 500; line-height: .82; letter-spacing: -.055em; }
+    h1 small { display: block; margin: .35em 0 .25em .15em; color: var(--coral); font-size: .27em; font-style: italic; font-weight: 400; letter-spacing: .08em; }
+    .lede { max-width: 33rem; margin: 2rem 0 0; color: var(--muted); font-size: clamp(1.16rem, 2.2vw, 1.48rem); line-height: 1.6; }
+    .sigil { position: relative; display: grid; place-items: center; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; }
+    .sigil::before, .sigil::after { content: ""; position: absolute; inset: 9%; border: 1px solid rgba(239, 199, 110, .12); border-radius: 50%; }
+    .sigil::after { inset: 20%; border-style: dashed; }
+    .hash { position: relative; z-index: 1; color: var(--gold); font: 400 clamp(8rem, 20vw, 14rem)/1 var(--serif); text-shadow: 0 0 60px rgba(239, 199, 110, .16); transform: rotate(-7deg); }
+    .note { position: absolute; color: var(--coral); font-size: 2rem; }
+    .note.one { top: 7%; right: 18%; }
+    .note.two { bottom: 10%; left: 16%; color: var(--gold); }
+    .status { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(2rem, 5vw, 3.5rem) 0; }
+    .status-grid { display: grid; grid-template-columns: auto 1fr; gap: 1.4rem; align-items: start; }
+    .seal { display: inline-block; margin-top: .25rem; padding: .48rem .7rem; border: 1px solid var(--coral); border-radius: 3px; color: var(--coral); font: 700 .64rem/1 var(--sans); letter-spacing: .17em; text-transform: uppercase; transform: rotate(-2deg); }
+    h2 { margin: 0 0 .8rem; font-size: clamp(1.8rem, 4vw, 2.7rem); font-weight: 500; line-height: 1.2; }
+    .status p { max-width: 47rem; margin: 0; color: var(--muted); font-size: 1.08rem; line-height: 1.75; }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: clamp(3rem, 7vw, 5rem) 0; background: var(--line); border: 1px solid var(--line); }
+    .principle { padding: clamp(1.4rem, 3vw, 2.4rem); background: rgba(16, 13, 27, .84); }
+    .number { display: block; margin-bottom: 1.4rem; color: var(--gold); font: 700 .68rem/1 var(--sans); letter-spacing: .16em; }
+    h3 { margin: 0 0 .75rem; color: var(--cream); font-size: 1.3rem; font-weight: 500; }
+    .principle p { margin: 0; color: var(--muted); font: .93rem/1.65 var(--sans); }
+    footer { display: flex; justify-content: space-between; gap: 1.5rem; padding: 0 0 2.5rem; color: var(--muted); font: .78rem/1.6 var(--sans); }
+    footer p { margin: 0; }
+    footer a { white-space: nowrap; }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 32px, 560px); }
+      header { align-items: flex-start; }
+      .home { max-width: 12rem; line-height: 1.5; }
+      .quiet { max-width: 8rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 3.5rem 0; }
+      .sigil { width: min(64vw, 270px); justify-self: center; }
+      .hash { font-size: min(40vw, 11rem); }
+      .principles { grid-template-columns: 1fr; }
+      .status-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; }
+      footer a { white-space: normal; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .sigil::after { animation: turn 80s linear infinite; }
+      @keyframes turn { to { transform: rotate(360deg); } }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the archive</a>
+  <div class="shell">
+    <header>
+      <a class="home" href="https://opensourceorchestra.org/" aria-label="Open Source Orchestra home">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="14" stroke="currentColor"/><path d="M8 19c3-8 5 8 8 0s5 8 8 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        Open Source Orchestra
+      </a>
+      <p class="quiet">A living archive<br>in quiet preparation</p>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="title">
+        <div>
+          <p class="eyebrow">Code · strings · stories · remembrance</p>
+          <h1 id="title">HASH <small>of</small> FAME</h1>
+          <p class="lede">For the hands that write the code, tune the strings, and keep the circle open.</p>
+        </div>
+        <div class="sigil" aria-hidden="true">
+          <span class="hash">#</span>
+          <span class="note one">♪</span>
+          <span class="note two">♫</span>
+        </div>
+      </section>
+      <section class="status" aria-labelledby="status-title">
+        <div class="status-grid">
+          <span class="seal">Not yet open</span>
+          <div>
+            <h2 id="status-title">The archive is being tuned.</h2>
+            <p>No honorees or remembrances are published here yet. The first features are being prepared privately, with original sources, media credits, and room for correction. This door will open only when the people and the circle are ready.</p>
+          </div>
+        </div>
+      </section>
+      <section class="principles" aria-label="Archive principles">
+        <article class="principle">
+          <span class="number">01 · HONOR</span>
+          <h3>Every gift belongs in the song.</h3>
+          <p>Code and music. The visible solo and the quiet commit. A living archive of contributions, never a leaderboard of humans.</p>
+        </article>
+        <article class="principle">
+          <span class="number">02 · EVIDENCE</span>
+          <h3>Sources before stories.</h3>
+          <p>Original recordings, durable commits, careful captions, clear attributions, and an honest place for uncertainty.</p>
+        </article>
+        <article class="principle">
+          <span class="number">03 · CONSENT</span>
+          <h3>Consent before celebration.</h3>
+          <p>People may review their own tribute. Remembrance asks for special care. Correction and takedown remain open.</p>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <p>A quiet work in progress · shared when the circle is ready.</p>
+      <a href="https://opensourceorchestra.org/">← Return to the orchestra</a>
+    </footer>
+  </div>
+</body>
+</html>

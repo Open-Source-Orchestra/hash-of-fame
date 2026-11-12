@@ -1,0 +1,3 @@
+# Quiet preparation: no search indexing before the circle opens this door.
+User-agent: *
+Disallow: /
