@@ -25,7 +25,7 @@ python3 -m http.server 8765
 # open http://127.0.0.1:8765/
 ```
 
-Code: GPL-3.0-or-later. Original generic site text: CC0-1.0. Third-party media, if added later, keeps its own license and attribution; no blanket license is granted for people's likenesses, stories, music, or photographs.
+Code: GPL-3.0-or-later. Original generic site text: CC BY-SA 4.0. Third-party media, if added later, keeps its own license and attribution; no blanket license is granted for people's likenesses, stories, music, or photographs.
 
 ## License
 
